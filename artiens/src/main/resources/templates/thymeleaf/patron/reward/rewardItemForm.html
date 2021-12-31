@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div class="grid-inner" th:fragment="rewardItem(rewardResult)">
+	<div class="portfolio-image">
+		<a th:href="@{|/patron/${rewardResult.patronId}|}"> 
+		<img th:src="${rewardResult.rewardFileName}" alt="Open Imagination">
+		</a>
+		<div class="bg-overlay">
+			<div class="bg-overlay-content dark" data-hover-animate="fadeIn">
+				<a th:href="@{|/patron/${rewardResult.patronId}|}"><h2>more</h2></a>
+			</div>
+			<div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+		</div>
+	</div>
+	<div class="portfolio-desc">
+		<h3>
+			<a th:href="@{|/patron/${rewardResult.patronId}|}"
+				th:text="|${rewardResult.rewardTitle}|">item Name</a>
+		</h3>
+		<div th:text="${rewardResult.rewardPrice}"></div>
+		<span><a th:href="@{#}"
+			th:text="|by ${rewardResult.creatorName}|"></a></span>
+	</div>
+</div>

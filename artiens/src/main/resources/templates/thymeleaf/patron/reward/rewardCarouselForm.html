@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!--Form start-->
+<div class="portfolio-item" th:fragment="rewaordCarousel" th:with="itemsName=${itemsName}, urlName=${urlName}, itemFileName=${itemFileName}">
+    <div class="portfolio-image" >
+        <a th:href="@{|/patron/reward/${urlName}|}">
+            <img th:src="@{|/images/patron/reward/category/${itemFileName}.jpg|}" alt="">
+        </a>
+        <div class="bg-overlay">
+            <div class="bg-overlay-content dark flex-column" data-hover-animate="fadeIn">
+                <div class="portfolio-desc pt-0 center" data-hover-animate="fadeInDownSmall"
+                     data-hover-animate-out="fadeOutUpSmall" data-hover-speed="350">
+                    <h3><a th:href="@{|/patron/reward/${urlName}|}" th:text="|${itemsName} |"></a><i class="icon-line-check-circle"></i></h3>
+                </div>
+                <!-- <div class="d-flex">
+                    <a th:href="@{|/artizen/patron/reward/${itemsName}|}" class="overlay-trigger-icon bg-light text-dark"
+                       data-hover-animate="fadeInUpSmall" data-hover-animate-out="fadeOutDownSmall"
+                       data-hover-speed="350" data-lightbox="iframe"><i class="icon-line-check-circle"></i></a>
+                </div> -->
+            </div>
+            <div class="bg-overlay-bg dark" data-hover-animate="fadeIn"></div>
+        </div>
+    </div>
+</div>
+<!--Form end-->

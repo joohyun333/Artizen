@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html th:replace="~{thymeleaf/fregment/layoutMain :: layout(~{::title}, ~{::link}, ~{::script}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Artizen 메인</title>
+    <!--link 태그 없으면 빈값으로 남겨야됨.-->
+    <link/>
+    <script></script>
+</head>
+<body>
+<section>
+    <h4 class="mb-3" th:text="|${member.getUsername()}님 어서오세요|">로그인 사용자 이름</h4>
+    <h4 class="mb-3" th:text="|세션 유효 시간 : ${#session.getMaxInactiveInterval()}|"></h4>
+    <h4 class="mb-3" th:text="|세션 생성 시간 : ${creationTime}|"></h4>
+    <h4 class="mb-3" th:text="|최근 접근 시간 : ${#session.getLastAccessedTime()}|"></h4>
+    <form th:action="@{/logout}" method="post">
+        <input type="submit" th:value="로그아웃">
+    </form>
+    <a href="/mail">메일</a>
+</section>
+</body>
+</html>

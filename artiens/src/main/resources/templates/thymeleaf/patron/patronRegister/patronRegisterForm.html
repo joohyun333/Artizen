@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html th:replace="~{thymeleaf/patron/fregment/patronLayoutBackScript :: patronLayout(~{::title}, ~{::link}, ~{::section}, ~{::style}, ~{::script})}"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Artizen 후원 등록</title>
+    <!--link 태그 없으면 빈값으로 남겨야됨.-->
+    <link rel="stylesheet" th:href="@{/css/components/bs-filestyle.css}" type="text/css"/>
+    <style></style>
+</head>
+<body>
+<!-- Page Title
+		============================================= -->
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1>후원 등록</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/patron}">후원이란</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/patron/creator}">크리에이터</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/patron/reward}">리워드</a></li>
+        </ol>
+    </div>
+
+</section><!-- #page-title end -->
+<!-- Content
+        ============================================= -->
+<section id="content">
+    <div class="content-wrap">
+        <div class="container clearfix">
+            <div th:replace="thymeleaf/patron/patronRegister/patronRegisterGuide::guide"></div>
+            
+            <div class="line" style="margin: 3rem 0"></div>
+            <div class="row justify-content-center" style="background-color:#d8dfe2">
+                <div class="col-lg-7 col-md-10">
+                    <div class="card my-5 shadow-sm">
+                        <div class="card-body p-5">
+                            <div class="fancy-title title-border title-center">
+                                <h3>후원 등록</h3>
+                            </div>
+                            <div class="form-widget">
+                                <div class="form-result"></div>
+                                <form class="row" id="freelance-quote" action="/patron/register" method="post" enctype="multipart/form-data">
+                                    <div class="col-12 form-group">
+                                        <label>대표 제목 :</label>
+                                        <input type="text" name="title" id="rewardTitle" class="form-control required"
+                                               value="" placeholder="대표 제목">
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>작가 :</label>
+                                        <input type="text" name="author" id="rewardAuthor"
+                                               class="form-control required"
+                                               th:value="${creatorName}" readonly>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>내용 :</label>
+                                        <textarea name="content"
+                                                  id="freelance-quote-additional-notes"
+                                                  class="form-control" cols="30" rows="8"></textarea>
+                                    </div>
+                                    <div class="col-lg-12 bottommargin">
+                                        <label>대표 이미지 :</label><br>
+                                        <input id="rewardRegisterImages" name="files" type="file"
+                                               class="file"
+                                               multiple
+                                               data-show-upload="false" data-show-caption="true"
+                                               data-show-preview="true">
+                                    </div>
+                                    <div class="col-12 d-none">
+                                        <input type="text" id="freelance-quote-botcheck" name="freelance-quote-botcheck"
+                                               value=""/>
+                                    </div>
+                                    <button class="button button-3d button-rounded button-teal"
+                                            th:href="|@{/patron/register/reward}|">리워드 설정</button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section><!-- #content end -->
+<script>
+  jQuery(document).ready(function () {
+    $('.price-range-slider').ionRangeSlider({
+      type: 'double',
+      prefix: '$',
+      min: 200,
+      max: 10000,
+      step: 100,
+      max_postfix: '+',
+      input_values_separator: ' to '
+    })
+
+    tinymce.init({
+      selector: '#freelance-quote-additional-notes',
+      menubar: false,
+      setup: function (editor) {
+        editor.on('change', function (e) {
+          editor.save()
+        })
+      }
+    })
+
+    $('#freelance-quote-sample').fileinput({
+      browseClass: 'btn btn-secondary',
+      browseIcon: '',
+      removeClass: 'btn btn-danger',
+      removeLabel: '',
+      removeIcon: '<i class=\'icon-trash-alt1\'></i>',
+      showUpload: false
+    })
+  })
+</script>
+</body>
+</html>

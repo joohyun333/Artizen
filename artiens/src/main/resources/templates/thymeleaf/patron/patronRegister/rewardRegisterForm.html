@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html
+	th:replace="~{thymeleaf/patron/fregment/patronLayoutBackScript :: patronLayout(~{::title}, ~{::link}, ~{::section}, ~{::style}, ~{::script})}"
+	xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<title>Artizen 후원등록</title>
+<!--link 태그 없으면 빈값으로 남겨야됨.-->
+<!-- Bootstrap File Upload CSS -->
+<link rel="stylesheet" th:href="@{/css/components/bs-filestyle.css}"
+	type="text/css" />
+<style>
+.block-form-2, .block-form-2 h1, .block-form-2 h2, .block-form-2 h3,
+	.block-form-2 h4, .block-form-2 h5, .block-form-2 h6, .block-form-2 p,
+	.block-form-2 label, .block-form-2 input {
+	font-family: 'Inter', sans-serif; -
+	-themecolor: #CC135C;
+}
+
+.block-form-2 label:not(.custom-control-label):not(.error) {
+	text-transform: none;
+	letter-spacing: 0;
+	font-weight: 500;
+	color: #777;
+	margin-bottom: 8px;
+	font-size: 14px;
+}
+
+.nav-pills .nav-link {
+	padding: 10px 17px;
+	color: #acaba8;
+	background-color: #f7f5f0;
+	border: 1px solid transparent;
+}
+
+.block-form-2 .nav-pills .nav-link.active, .block-form-2 .nav-pills .show>.nav-link,
+	.block-form-2 .nav-pills .nav-link:not(.active) {
+	background-color: #CC135C;
+}
+
+.block-form-2 .nav-pills .nav-link:not(.active) {
+	opacity: .7;
+}
+</style>
+</head>
+<body>
+	<!-- Page Title
+		============================================= -->
+	<section id="page-title">
+
+		<div class="container clearfix">
+			<h1>후원 등록</h1>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item active" aria-current="page"><a
+					th:href="@{/patron}">후원이란</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a
+					th:href="@{/patron/creator}">크리에이터</a></li>
+				<li class="breadcrumb-item active" aria-current="page"><a
+					th:href="@{/patron/reward}">리워드</a></li>
+			</ol>
+		</div>
+
+	</section>
+	<!-- #page-title end -->
+
+	<!-- Content
+    ============================================= -->
+	<section id="content">
+		<div class="content-wrap">
+			<div class="container clearfix">
+				<div
+					th:replace="thymeleaf/patron/patronRegister/patronRegisterGuide::guide"></div>
+
+				<div class="line" style="margin: 3rem 0"></div>
+				<div class="row justify-content-center" style="background-color: #d8dfe2;">
+					<div class="col-lg-7 col-md-10">
+						<div class="row align-items-stretch justify-content-between g-0">
+
+							<div class="card my-5 shadow-sm">
+								<div class="card-body p-5">
+									<!-- <div class="form-widget" data-alert-type="inline"> -->
+										<div class="form-result"></div>
+
+										<form id="step-form" class="mb-0"
+											th:action="@{/patron/register}" method="post"
+											enctype="multipart/form-data">
+
+
+											<div id="tab-reservation"
+												class="nav nav-pills flex-column flex-lg-row" role="tablist">
+												<a class="nav-link active ms-0" data-bs-toggle="list"
+													href="#tab-reservation-details" role="tab">후원 메인 등록</a> <a
+													class="nav-link ms-0 mt-2 mt-lg-0 ms-lg-3"
+													data-bs-toggle="list"
+													href="#tab-reservation-select-address" role="tab">리워드
+													설정</a>
+											</div>
+
+											<div class="line line-sm"></div>
+
+											<div class="tab-content mt-5" id="nav-tabContent">
+
+												<div class="tab-pane fade show active"
+													id="tab-reservation-details" role="tabpanel"
+													aria-labelledby="tab-reservation-details">
+													<span class="op-05 text-smaller ls1">STEP - 1/2</span>
+													<h2 class="mb-5 text-uppercase ls1 fw-bold">후원 메인 등록</h2>
+													<div class="row">
+
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-name">대표 제목<small
+																class="text-danger">*</small> :
+															</label> <input type="text" name="patronTitle"
+																id="template-contactform-name" value=""
+																class="form-control"
+																placeholder="ex) 소소한 행복과 푸르고 편안한 그림들을 그립니다." />
+														</div>
+
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-name2">작가<small
+																class="text-danger">*</small> :
+															</label> <input type="text" name="patronAuthor"
+																id="template-contactform-name2" readonly
+																class="form-control-plaintext h6 bg-light px-3 rounded"
+																th:value="${creatorName}" value=""
+																placeholder="자동으로 creator input">
+														</div>
+
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-message">내용 :</label>
+															<textarea class="required form-control textarea-message"
+																id="template-contactform-message" name="patronContent"
+																rows="6" cols="30" placeholder="안녕하세요, 그림작가  XX입니다."></textarea>
+														</div>
+
+														<div class="col-lg-12 bottommargin">
+															<label>대표 이미지 :</label><br> <input id="input-3"
+																name="patronFiles" type="file" class="file" multiple
+																data-show-upload="false" data-show-caption="true"
+																data-show-preview="true">
+														</div>
+
+														<div class="w-100 clear"></div>
+
+														<input type="hidden" name="creatorId"
+															th:value="${creatorId}">
+
+														<div class="col-12">
+															<a href="#"
+																class="btn px-5 py-3 tab-action-btn-next float-end text-white"
+																style="background-color: #3D1144;">리워드 설정</a>
+														</div>
+													</div>
+												</div>
+
+												<div class="tab-pane fade"
+													id="tab-reservation-select-address" role="tabpanel"
+													aria-labelledby="tab-reservation-select-address">
+													<span class="op-05 text-smaller ls1">STEP - 2/2</span>
+													<h2 class="mb-5 text-uppercase ls1 fw-bold">리워드 등록</h2>
+													<div class="row">
+
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-name3">리워드 제목<small
+																class="text-danger">*</small> :
+															</label> <input type="text" id="template-contactform-name3"
+																name="rewardTitle" value="" class="form-control"
+																placeholder="ex) 무지 노트 4종 세트" />
+														</div>
+
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-default-select">리워드
+																카테고리 :</label> <select id="template-contactform-default-select"
+																name="rewardCategory" class="form-select">
+																<option value="" disabled selected>어떤 종류의 리워드
+																	인가요</option>
+																<option value="Calendar">달력</option>
+																<option value="Cup">컵</option>
+																<option value="Frame">액자</option>
+																<option value="Note">공책</option>
+																<option value="Poster">포스터</option>
+																<option value="Sticker">스티커</option>
+																<option value="Tumbler">텀블러</option>
+																<option value="etc">기타</option>
+															</select>
+														</div>
+														
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-default-select">리워드
+																가격 :</label> <select id="template-contactform-default-select"
+																name="rewardPrice" class="form-select">
+																<option value="" disabled selected>리워드의 가격을 설정하세요.</option>
+																<option value="5000">5000</option>
+																<option value="10000">10000</option>
+																<option value="15000">15000</option>
+																<option value="18000">18000</option>
+																<option value="20000">20000</option>
+																<option value="25000">25000</option>
+																<option value="40000">40000</option>
+															</select>
+														</div>
+
+														<div class="col-12 bottommargin-sm">
+															<label for="template-contactform-message2">내용 :</label>
+															<textarea class="required form-control textarea-message"
+																id="template-contactform-message2" name="rewardContent"
+																rows="6" cols="30"
+																placeholder="ex) 130*190(mm)/ 내지 미색 모조/ 48p/ 4종 1세트(총 4권) (구매 시 선착순 랜덤 엽서 증정)"></textarea>
+														</div>
+
+														<div class="col-lg-12 bottommargin">
+															<label>대표 이미지 :</label><br> <input id=""
+																name="rewardFiles" type="file" class="file" multiple
+																data-show-upload="false" data-show-caption="true"
+																data-show-preview="true">
+														</div>
+
+														<div class="col-12">
+															<button type="submit"
+																class="btn px-5 py-3 float-end text-white"
+																style="background-color: #3D1144;">후원 등록 완료하기</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</form>
+									<!-- </div> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- #content end -->
+
+	<!-- Select-Boxes Plugin -->
+	<script th:src="@{/js/components/select-boxes.js}"></script>
+	<!-- Date & Time Picker JS -->
+	<script th:src="@{/js/components/moment.js}"></script>
+	<script th:src="@{/js/components/timepicker.js}"></script>
+
+	<!-- Range Slider Plugin -->
+	<script th:src="@{/js/components/rangeslider.min.js}"></script>
+
+	<!-- Select-Splitter Plugin -->
+	<script th:src="@{/js/components/selectsplitter.js}"></script>
+	<script>
+		jQuery(document)
+				.ready(
+						function() {
+
+							$('.tab-action-btn-next')
+									.click(
+											function(e) {
+												let elementTab = $(this)
+														.parents('.tab-pane');
+												$('#step-form').valid();
+												let errors = elementTab
+														.find('.required.error').length;
+												if (errors > 0) {
+													$(
+															'#tab-reservation > .active')
+															.nextAll('a')
+															.addClass(
+																	'disabled');
+													return false;
+												} else {
+													$(
+															'#tab-reservation > .active')
+															.next('a')
+															.removeClass(
+																	'disabled')
+															.trigger('click');
+													let nextTabEl = $(
+															'#tab-reservation > .active')
+															.next('a')
+															.removeClass(
+																	'disabled'), tab = new bootstrap.Tab(
+															nextTabEl.get(0));
+
+													tab.show();
+
+													e.preventDefault();
+													return false;
+												}
+											});
+
+							jQuery(".range_01").ionRangeSlider({
+								grid : true,
+								min : 18,
+								max : 70,
+								from : 30,
+								prefix : "Age ",
+								max_postfix : "+"
+							});
+
+							jQuery('.datetimepicker1').datetimepicker();
+
+							jQuery('.selectsplitter').selectsplitter();
+
+							tinymce.init({
+								selector : '.textarea-message',
+								menubar : false,
+								setup : function(editor) {
+									editor.on('change', function(e) {
+										editor.save();
+									})
+								}
+							})
+						});
+	</script>
+
+</body>
+</html>

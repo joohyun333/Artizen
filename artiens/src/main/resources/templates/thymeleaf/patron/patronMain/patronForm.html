@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html th:replace="~{thymeleaf/patron/fregment/patronLayout :: patronLayout(~{::title}, ~{::link}, ~{::script}, ~{::section}, ~{::style})}"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Artizen 후원</title>
+    <link rel="stylesheet" th:href="@{/css/swiper.css}" type="text/css"/>
+    <!-- One Page Module Specific Stylesheet -->
+    <!--    <link rel="stylesheet" th:href="@{/one-page/onepage.css}" type="text/css" />-->
+    <!-- / -->
+    <link rel="stylesheet" th:href="@{/one-page/css/et-line.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/one-page/css/fonts.css}" type="text/css"/>
+    <script></script>
+    <style>
+        .feature-box-border-vertical .feature-box { position: relative; }
+
+        .feature-box-border-vertical .feature-box:not(.noborder)::before,
+        .feature-box-border-vertical.border-hover-animate .feature-box:not(.noborder)::after {
+            content: "";
+            position: absolute;
+            top: calc(64px + 13px);
+            left: 59px;
+            width: 2px;
+            height: calc(100% - 90px);
+            background-color: #EEE;
+            z-index: 0;
+        }
+
+        .feature-box-border-vertical.border-hover-animate .feature-box:not(.noborder)::after {
+            background-color: #0F6458;
+            height: 0;
+            transition: height .3s ease-in-out;
+        }
+
+        .feature-box-border-vertical .feature-box:nth-child(1):not(.noborder)::before { background-color: #0F6458; }
+
+        .feature-box-border-vertical.border-hover-animate .feature-box:hover:not(.noborder)::after { height: calc(100% - 90px); }
+
+        .feature-box-border-vertical .fbox-icon i,
+        .feature-box-border-vertical .fbox-border.fbox-light .fbox-icon i {
+            line-height: 60px;
+            font-size: 24px;
+            z-index: 1;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<section id="slider" class="slider-element slider-parallax swiper_wrapper min-vh-100 include-header" data-loop="true"
+         data-speed="1000" data-effect="fade">
+    <div class="slider-inner">
+
+        <div class="swiper-container swiper-parent">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide dark">
+                    <div class="container">
+                        <div class="slider-caption slider-caption-top-left">
+                            <h2 data-animate="fadeInUp" style="color: #0b0b0b">Support</h2>
+                            <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200"
+                               style="color: #0b0b0b">
+                                작품 연재에 대한 응원, 이제 후원으로 표현해보세요!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide-bg" th:style="|background-image: url(@{/one-page/images/page/patron1.jpg});|"></div>
+                </div>
+                <div class="swiper-slide dark">
+                    <div class="container">
+                        <div class="slider-caption slider-caption-center">
+                            <h2 data-animate="fadeInUp" style="color: #0b0b0b">Goods</h2>
+                            <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200"
+                               style="color: #0b0b0b">
+                                마음에 드는 그림을 원하는 상품에!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide-bg"
+                         th:style="|background-image: url(@{/one-page/images/page/patron2.jpg});|"></div>
+                </div>
+                <div class="swiper-slide dark">
+                    <div class="container">
+                        <div class="slider-caption slider-caption-right">
+                            <h2 data-animate="fadeInUp">Everyone</h2>
+                            <p class="d-none d-sm-block" data-animate="fadeInUp" data-delay="200">
+                                누구나 후원을 받을 수 있습니다!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide-bg"
+                         th:style="|background-image: url(@{/one-page/images/page/patron3.png});|"></div>
+                </div>
+            </div>
+            <div class="slider-arrow-left"><i class="icon-angle-left"></i></div>
+            <div class="slider-arrow-right"><i class="icon-angle-right"></i></div>
+        </div>
+
+        <a th:href="@{/patron}" data-scrollto="#section-about" data-easing="easeInOutExpo" data-speed="1250" data-offset="65"
+           class="one-page-arrow dark">
+            <i class="icon-angle-down infinite animated fadeInDown"></i></a>
+    </div>
+</section>
+<!-- Page Title
+		============================================= -->
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1>후원</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/patron}">후원이란</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/patron/creator}">크리에이터</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a th:href="@{/patron/reward}">리워드</a></li>
+        </ol>
+    </div>
+
+</section><!-- #page-title end -->
+
+
+<!-- Content
+		============================================= -->
+<section id="content">
+    <div class="content-wrap">
+        <div class="container">
+
+            <div class="row feature-box-border-vertical border-hover-animate col-mb-50 justify-content-center align-items-center my-5">
+                <div class="col-md-6 feature-box fbox-border fbox-light fbox-effect">
+                    <div class="fbox-icon bg-white">
+                        <a th:href="@{/artizen/patron}"><i class="icon-money"></i></a>
+                    </div>
+                    <div class="fbox-content">
+                        <h3 class="nott text-larger mb-2">Artizen의 후원은?</h3>
+                        <p>팬들과 크리에이터가 좀 더 가깝게 교류할 수 있고, 스토리 연재를 지속하는데 도움이 될 수 있도록 후원 기능을 선보입니다.
+                            후원을 통해 크리에이터는 작품 활동에 전념할 수 있으며, 팬들은 오직 후원자만 가질 수 있는 특별한 선물로 크리에이터와
+                            좀 더 특별한 관계가 됩니다.</p>
+                        <a th:href="@{/patron/register}" class="button button-small button-dark button-rounded border-width-1 ms-0 mt-3">후원등록<i class="icon-angle-right me-0"></i></a>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="col-md-6 feature-box fbox-border fbox-light fbox-effect">
+                    <div class="fbox-icon bg-white">
+                        <a th:href="@{/patron}"><i class="icon-line-check-circle"></i></a>
+                    </div>
+                    <div class="fbox-content">
+                        <h3 class="nott text-larger mb-2">Artizen 후원 조건</h3>
+                        <p>아티즌에 작품을 연재하고 있는 모든 크리에이터들이 후원을 설정할 수 있습니다.
+                            크리에이터의 후원 등록 여부는 프로필 페이지에서 확인할 수 있습니다.</p>
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="col-md-6 feature-box fbox-border fbox-light fbox-effect noborder">
+                    <div class="fbox-icon bg-white">
+                        <a th:href="@{/patron}"><i class="icon-book3"></i></a>
+                    </div>
+                    <div class="fbox-content">
+                        <h3 class="nott text-larger mb-2">Artizen 메뉴 이용 가이드</h3>
+                        <p><strong>크리에이터</strong> - 선택하고 싶은 크리에이터분에게 직접 후원이 가능합니다.<br></p>
+                        <a th:href="@{/patron/creator}" class="button button-small button-dark button-rounded border-width-1 ms-0 mt-3">크리에이터<i class="icon-angle-right me-0"></i></a>
+                        <p><strong>리워드</strong> - 리워드별로 후원이 가능합니다. 마음에 드는 작품을 리워드에!<br></p>
+                        <a th:href="@{/patron/reward}" class="button button-small button-dark button-rounded border-width-1 ms-0 mt-3">리워드<i class="icon-angle-right me-0"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</section><!-- #content end -->
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="grid-inner"
+	th:style="|background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, .3) 75%, rgba(0, 0, 0, 0.9) 100%), url('${result}') no-repeat center center/cover; height: 400px|"
+	th:fragment="imageForm(result)">
+	<div class="bg-overlay position-relative">
+		<div class="bg-overlay-content flex-column justify-content-end align-items-start px-5 py-4 dark">
+			<div class="entry-meta mb-3">
+				<ul>
+					<!-- <li><a href="blog-single-thumbs.html#comments"><i
+							class="icon-comments"></i> 0</a></li> -->
+				</ul>
+			</div>
+			<div class="entry-title title-sm">
+				<h3>
+					<a href="#"></a>
+				</h3>
+			</div>
+			<a th:href="${result}"><i class="icon-line-camera btn-more"></i></a>
+		</div>
+	</div>
+</div>

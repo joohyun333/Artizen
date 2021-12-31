@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>alert</title>
+<script th:inline="javascript">
+	[# th:if="${alertActive} == developing"]
+		alert('개발중입니다...');
+		 location.href = [[@{/patron}]]
+	[/]
+</script>
+</head>
+<body>
+
+</body>
+</html>

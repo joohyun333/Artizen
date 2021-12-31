@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="footer">
+	<!-- Footer
+    ============================================= -->
+	<footer id="footer" class="dark">
+		<!-- Copyrights
+        ============================================= -->
+		<div id="copyrights">
+			<div class="container">
+				<div class="row justify-content-between col-mb-30">
+					<div
+						class="col-12 col-lg-auto text-center text-lg-start order-last order-lg-first">
+						<img th:src="@{/images/logo_new/logo_D.png}" alt="Image"
+							class="mb-4"><br> Copyrights &copy; 2021 All Rights
+						Reserved by Artizen.
+					</div>
+
+					<div class="col-12 col-lg-auto text-center text-lg-end">
+						<div class="copyrights-menu copyright-links">
+							<a th:href="@{/}">작품</a>/<a
+								th:href="@{/collaboration/main}">콜라보레이션</a>/<a th:href="@{/patron}">후원</a>
+						</div>
+						<a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-facebook">
+							<i class="icon-facebook"></i> <i class="icon-facebook"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-twitter">
+							<i class="icon-twitter"></i> <i class="icon-twitter"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-gplus">
+							<i class="icon-gplus"></i> <i class="icon-gplus"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-pinterest">
+							<i class="icon-pinterest"></i> <i class="icon-pinterest"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-vimeo">
+							<i class="icon-vimeo"></i> <i class="icon-vimeo"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-github">
+							<i class="icon-github"></i> <i class="icon-github"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-yahoo">
+							<i class="icon-yahoo"></i> <i class="icon-yahoo"></i>
+						</a> <a th:href="@{/}"
+							class="social-icon inline-block si-small si-borderless mb-0 si-linkedin">
+							<i class="icon-linkedin"></i> <i class="icon-linkedin"></i>
+						</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<!-- #copyrights end -->
+	</footer>
+	<!-- #footer end -->
+	<!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+    <!-- JavaScripts
+    ============================================= -->
+    <script th:src="@{/js/jquery.js}"></script>
+    <script th:src="@{/js/plugins.min.js}"></script>
+
+    <!-- Range Slider Plugin -->
+    <script th:src="@{/js/components/rangeslider.min.js}"></script>
+
+    <!-- Bootstrap File Upload Plugin -->
+    <script th:src="@{/js/components/bs-filestyle.js}"></script>
+
+    <!-- TinyMCE Plugin -->
+    <script th:src="@{/js/components/tinymce/tinymce.min.js}"></script>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script th:src="@{/js/functions.js}"></script>
+</div>

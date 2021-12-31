@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html th:fragment="patronLayout(title, links, content, style, backscript)" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Stylesheets
+      ============================================= -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/style.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/dark.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/font-icons.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/animate.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}" type="text/css" />
+    <link rel="stylesheet" th:href="@{/css/custom.css}" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title th:replace="${title}">레이아웃 타이틀</title>
+    <!--<head 추가>-->
+    <th:block th:replace="${links}"/>
+    <th:block th:replace="${style}"/>
+</head>
+<body class="stretched">
+<!-- Document Wrapper
+============================================= -->
+<div id="wrapper" class="clearfix">
+    <div th:if="${member}!=null">
+        <header th:replace="thymeleaf/fregment/login-header::header"/>
+    </div>
+    <div th:if="${member}==null">
+        <header th:replace="thymeleaf/fregment/none-login-header::header"/>
+    </div>
+    <div th:replace="${content}"></div>
+    <footer th:replace="thymeleaf/fregment/footer::footer"/>
+</div><!-- #wrapper end-->
+<th:block th:replace="${backscript}"/>
+</body>
+</html>

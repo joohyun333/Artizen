@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div class="card border-0 dark shadow-sm h-shadow shadow-ts p-3"
+	th:style="|background: linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, .4)), url('${reawrdInfo.rewardImages[0]}') no-repeat top center/cover;|"
+	th:fragment="imageForm(reawrdInfo, patronId)">
+	<div class="card-body">
+		<h6 class="fw-normal text-uppercase ls2 text-white-50 mb-2" th:text="${reawrdInfo.rewardSubject}">Category</h6>
+		<h3 class="card-title h2 fw-bold mb-4 text-white" th:text="${reawrdInfo.rewardTitle}">title</h3>
+		<p class="card-text mb-1" th:text="${reawrdInfo.rewardPrice}">price</p>
+		<p class="card-text mb-5">[[${reawrdInfo.rewardContent}]]</p>
+		<a th:href="@{|/patron/ok/?patron=ok&id=${patronId}|}"><i class="icon-hand-holding-heart h4 icon-stacked text-center rounded-circle bg-white text-dark"></i></a>
+	</div>
+</div>
+
+<!-- <div class="card border-0 dark shadow-sm h-shadow shadow-ts p-3"
+	th:style="|background: url('${reawrdInfo.rewardImages[0]}') no-repeat center center/cover;|"
+	th:fragment="imageForm(reawrdInfo)">
+	<div class="card-body">
+		<h6 class="fw-normal text-uppercase ls2 text-white-50 mb-2"
+			th:text="${reawrdInfo.rewardSubject}">Reward</h6>
+		<h3 class="card-title h2 fw-bold mb-4 text-white"
+			th:text="${reawrdInfo.rewardTitle}">Card Overlay Bg</h3>
+		<p class="card-text mb-5" th:text="${reawrdInfo.rewardContent}">Lorem
+			ipsum dolor sit amet, consectetur adipisicing elit. Iure, est
+			blanditiis id aut enim consequuntur. Voluptates error dicta assumenda
+			voluptatem!</p>
+		<a href="#"><i
+			class="icon-hand-holding-heart h4 icon-stacked text-center rounded-circle bg-white text-dark"></i></a>
+	</div>
+</div> -->

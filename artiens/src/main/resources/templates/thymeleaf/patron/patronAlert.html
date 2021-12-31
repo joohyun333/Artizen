@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>patron alert</title>
+<script th:inline="javascript">
+	[# th:if="${alertActive} == complete"]
+	alert('등록을 완료 했습니다.');
+	location.href = [[@{/patron}]];
+	[/]
+	
+	[# th:if="${alertActive} == fail"]
+	alert('등록을 실패 했습니다.');
+	location.href = [[@{/patron/register}]];
+	[/]
+
+	[# th:if="${alertActive} == registerDenial"]
+	alert('후원을 등록할 권한이 없습니다.');
+	location.href = [[@{/patron}]];
+	[/]
+	
+	[# th:if="${alertActive} == noUser"]
+	alert('로그인을 하세요.');
+	location.href = [[@{/login}]]+[[${redirectURL}]];
+	[/]
+		
+	[# th:if="${alertActive} == noCreator"]
+	alert('크리에이터 등록을 하세요.');
+	location.href = [[@{/patron}]];
+	[/]
+	
+	[# th:if="${alertActive} == alreadyPatorn"]
+	alert('이미 후원등록을 완료하신 상태입니다.');
+	location.href = [[@{/patron}]];
+	[/]
+	
+	[# th:if="${alertActive} == noExistPatron"]
+	alert('유효하지 않은 요청입니다.');
+	location.href = [[@{/patron}]];
+	[/]
+	
+	[# th:if="${alertActive} == patronOK"]
+	alert('후원해주셔서 감사합니다. 결제 기능은 구현중입니다.');
+	location.href = [[@{/patron}]] + '/' + [[${patronId}]];
+	[/]
+</script>
+</head>
+<body>
+</body>
+</html>

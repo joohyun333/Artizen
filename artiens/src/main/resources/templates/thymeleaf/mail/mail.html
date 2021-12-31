@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <div th:replace="fregment/head :: head"/>
+    <title>메일 발송</title>
+</head>
+<body>
+<h1>메일 발송</h1>
+
+<form th:action="@{/artizen/mail}" th:object="${mailDto}" method="post">
+    <input th:field = "*{address}" placeholder="이메일 주소"> <br>
+    <input th:field = "*{title}" name="title" placeholder="제목"> <br>
+    <textarea th:field = "*{message}" name="message" placeholder="메일 내용을 입력해주세요." cols="60" rows="20"></textarea>
+    <button type="submit">발송</button>
+</form>
+</body>
+</html>

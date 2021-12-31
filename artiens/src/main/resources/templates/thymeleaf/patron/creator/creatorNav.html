@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="filter">
+    <!-- Primary Navigation
+                ============================================= -->
+    <nav class="primary-menu with-arrows block-nav-menu" style="margin-left: 5%">
+
+        <ul class="menu-container justify-content-start"> <!-- justify-content-center class for center menu-->
+            <li class="menu-item current">
+                <a class="menu-link" th:href="@{/patron/creator}">
+                    <div>최신 등록순</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a class="menu-link" th:href="@{/developing}">
+                    <div>후원 참여자순</div>
+                </a>
+            </li>
+        </ul>
+    </nav><!-- #primary-menu end -->
+</div>

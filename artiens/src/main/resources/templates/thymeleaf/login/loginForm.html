@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html th:replace="~{thymeleaf/fregment/layoutMain :: layout(~{::title}, ~{::link}, ~{::script}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Artizen_login</title>
+    <!--link 태그 없으면 빈값으로 남겨야됨.-->
+    <link/>
+    <script th:inline="javascript">
+      if ([[${loginCheck}]] == false) {
+        alert('해당 정보가 없습니다.')
+      }
+      if ([[${param.joinCheck}]] == 'true') {
+        alert('회원가입에 성공했습니다.')
+      }
+      if ([[${joinCheck}]] == false) {
+        alert('회원가입에 실패했습니다.')
+      }
+    </script>
+</head>
+<body>
+<!-- Page Title
+		============================================= -->
+<section id="page-title">
+
+    <div class="container clearfix">
+        <h1>My Account</h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a th:href="@{/}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page" th:href="@{/login}">Login</li>
+        </ol>
+    </div>
+
+</section><!-- #page-title end -->
+
+<!-- Content
+============================================= -->
+<section id="content" th:style="|background: url(@{/images/login/login.jpeg});|">
+    <div class="content-wrap">
+        <div class="container clearfix">
+
+            <div class="tabs mx-auto mb-0 clearfix" id="tab-login-register" style="max-width: 500px;">
+
+                <ul class="tab-nav tab-nav2 center clearfix">
+                    <li class="inline-block"><a href="#tab-login">Login</a></li>
+                    <li class="inline-block"><a href="#tab-register">Register</a></li>
+                </ul>
+
+                <div class="tab-container">
+
+                    <div class="tab-content" id="tab-login">
+                        <div class="card mb-0">
+                            <div class="card-body" style="padding: 40px;">
+                                <form id="login-form" name="login-form" class="mb-0" th:object="${loginForm}"
+                                      th:action="@{|/login?redirectURL=${redirectPath}|}" method="post">
+
+                                    <h3>Login to your Account</h3>
+
+                                    <div class="row">
+                                        <div class="col-12 form-group">
+                                            <label for="email">UserEmail:</label>
+                                            <input type="text" id="email" name="email" th:field="*{email}" class="form-control"/>
+                                            <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('email')}">
+                                                <div class="sb-msg">
+                                                    <i class="icon-remove"></i><span th:errors="*{email}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 form-group">
+                                            <label for="login-form-password">Password:</label>
+                                            <input type="password" id="login-form-password"
+                                                   name="password" th:field="*{password}" class="form-control"/>
+                                            <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('password')}">
+                                                <div class="sb-msg">
+                                                    <i class="icon-remove"></i><span th:errors="*{password}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 form-group">
+                                            <button class="button button-3d button-black m-0" id="login-form-submit"
+                                                    name="login-form-submit" value="login" type="submit">Login
+                                            </button>
+                                            <a href="#" class="float-end">Forgot Password?</a>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-register">
+                        <div class="card mb-0">
+                            <div class="card-body" style="padding: 40px;">
+                                <h3>Register for an Account</h3>
+
+                                <form id="register-form" name="register-form" class="row mb-0" th:object="${joinForm}"
+                                      th:action="@{/join}" method="post">
+
+                                    <div class="col-12 form-group">
+                                        <label for="register-form-name">Name:</label>
+                                        <input type="text" id="register-form-name" name="name" th:field="*{name}"
+                                               class="form-control"/>
+                                        <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('name')}">
+                                            <div class="sb-msg">
+                                                <i class="icon-remove"></i><span th:errors="*{name}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="register-form-email">Email Address:</label>
+                                        <input type="text" id="register-form-email" name="email" th:field="*{email}"
+                                               class="form-control"/>
+                                        <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('email')}">
+                                            <div class="sb-msg">
+                                                <i class="icon-remove"></i><span th:errors="*{email}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="register-form-username">Username:</label>
+                                        <input type="text" id="register-form-username" name="username"
+                                               th:field="*{username}" class="form-control"/>
+                                        <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('username')}">
+                                            <div class="sb-msg">
+                                                <i class="icon-remove"></i><span th:errors="*{username}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="register-form-password">Password:</label>
+                                        <input type="password" id="register-form-password" name="password"
+                                               th:field="*{password}" class="form-control"/>
+                                        <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('password')}">
+                                            <div class="sb-msg">
+                                                <i class="icon-remove"></i><span th:errors="*{password}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <label for="register-form-repassword">Password Check:</label>
+                                        <input type="password" id="register-form-repassword"
+                                               name="repassword" th:field="*{repassword}" class="form-control"/>
+                                        <div class="style-msg errormsg" style="margin-top: 10px" th:if="${#fields.hasErrors('repassword')}">
+                                            <div class="sb-msg">
+                                                <i class="icon-remove"></i><span th:errors="*{repassword}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 form-group">
+                                        <button class="button button-3d button-black m-0" id="register-form-submit"
+                                                name="register-form-submit" value="register" type="submit">Register Now
+                                        </button>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

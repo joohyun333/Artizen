@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html th:replace="~{fregment/layoutMain :: layout(~{::title}, ~{::link}, ~{::script}, ~{::section})}"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Artizen 디폴트</title>
+    <!--link 태그 없으면 빈값으로 남겨야됨.-->
+    <link/>
+    <script></script>
+</head>
+<body>
+<section>
+    <section id="slider" class="slider-element min-vh-60 min-vh-md-100 dark error404-wrap include-header">
+        <div class="slider-inner">
+
+            <div class="vertical-middle">
+                <div class="container text-center py-5 py-md-0">
+
+                    <div class="error404">404</div>
+
+                    <div class="heading-block border-bottom-0">
+                        <h4>Ooopps.! The Page you were looking for, couldn't be found.</h4>
+                        <span>Try the search below to find matching pages:</span>
+                    </div>
+
+                    <form th:action="@{/artizen}" method="get" class="mx-auto mb-0">
+                        <div class="input-group input-group-lg">
+                            <input type="text" class="form-control" placeholder="Search for Pages...">
+                            <button class="btn btn-danger" type="button"><i class="icon-line-search"></i></button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="video-wrap">
+                <video th:poster="@{/images/videos/explore-poster.jpg}" preload="auto" loop autoplay muted>
+                    <source th:src="@{/images/videos/explore.mp4}" type='video/mp4' />
+                    <source th:src="@{/images/videos/explore.webm}" type='video/webm' />
+                </video>
+                <div class="video-overlay" style="background-color: rgba(0,0,0,0.3);"></div>
+            </div>
+
+        </div>
+    </section>
+</section>
+</body>
+</html>
