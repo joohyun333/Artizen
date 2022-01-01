@@ -343,6 +343,7 @@ public class initDb {
 			 */
 			Collaboration collaboration3 = Collaboration.createCollaboration(
 					"제7회 상상만발 책그림전", 
+					LocalDateTime.now().minusDays(10),
 					LocalDateTime.now().minusDays(1), 
 					"참여 방법\r\n" + 
 					"* 각각의 이미지 사이즈는 10MB 안에서 자유롭게 조정할 수 있습니다. (단, 표지는 640px 크기로 노출됩니다)\r\n" + 

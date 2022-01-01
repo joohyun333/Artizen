@@ -73,6 +73,23 @@ public class Collaboration {
 		collaboration.evaluate = false;
 		return collaboration;
 	}
+	public static Collaboration createCollaboration(
+			String title, 
+			LocalDateTime startDate,
+			LocalDateTime deadLineDate, 
+			String content, 
+			Creator creator,
+			String storeFileName) {
+		Collaboration collaboration = new Collaboration();
+		collaboration.title = title;
+		collaboration.registerDate = startDate;
+		collaboration.deadlineDate = deadLineDate;
+		collaboration.content = content;
+		collaboration.creator = creator;
+		collaboration.storeFileName = storeFileName;
+		collaboration.evaluate = false;
+		return collaboration;
+	}
 	
 	public Long getId() {
 		return id;
